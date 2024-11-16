@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Start the LocalSandBox Service Bus Emulator
+docker compose up -d
+
+# Create Service Bus Topics and Subscriptions
+docker exec local-sandbox \
+  azl servicebus queue create \
+  --name test-queue \
+  --namespace-name default \
+  --resource-group default
+
+docker exec local-sandbox \
+  azl servicebus topic create \
+  --name test-topic \
+  --namespace-name default \
+  --resource-group default
+
+docker exec local-sandbox \
+  azl servicebus topic subscription create \
+  --name test-subscription \
+  --namespace-name default \
+  --resource-group default \
+  --topic-name test-topic
+
+# Start the application
+npm run start:watch
+
