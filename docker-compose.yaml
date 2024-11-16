@@ -1,0 +1,6 @@
+services:
+  local-sandbox:
+    image: localsandbox/localsandbox
+    ports:
+      - "7329:7329"
+      - "5672:5672"
