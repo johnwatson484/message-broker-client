@@ -13,5 +13,3 @@ const subscriptionMessage = await receiveFromSubscription(client)
 console.log(subscriptionMessage)
 
 await client.close()
-
-
